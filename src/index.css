@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f7f8f4;
+  --color-surface: #ffffff;
+  --color-ink: #1a1d16;
+  --color-muted: #5c6658;
+  --color-line: #e2e8dc;
+  --color-accent: #93d632;
+  --color-leaf: #3a7a14;
+  --color-linen: #e8f6c8;
+  --color-brass: #93d632;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f7f8f4;
+  color: #1a1d16;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  color: #1a1d16;
+}
+
+::selection {
+  background: var(--color-linen);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.portrait-figure {
+  touch-action: pan-y;
+}
+
+.portrait-stage {
+  perspective: 900px;
+}
+
+.portrait-layer {
+  transition: none;
+}
+
+.portrait-photo {
+  box-shadow: 0 10px 24px rgba(48, 38, 42, 0.06);
+  animation: portrait-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: box-shadow 0.45s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portrait-stage.is-hover .portrait-photo {
+    box-shadow: 0 14px 28px rgba(48, 38, 42, 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-diagram {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .project-diagram {
+    transform: translateY(-3px);
+  }
+}
+
+.portrait-reveal {
+  animation: portrait-mask 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.portrait-wash {
+  animation: portrait-fade 0.65s ease 0.1s both;
+}
+
+.portrait-ring {
+  animation: portrait-fade 0.6s ease 0.22s both;
+}
+
+.portrait-dot,
+.portrait-meta {
+  animation: portrait-fade 0.5s ease 0.34s both;
+}
+
+@keyframes portrait-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes portrait-mask {
+  from {
+    clip-path: circle(36% at 50% 46%);
+  }
+  to {
+    clip-path: circle(50% at 50% 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .portrait-reveal,
+  .portrait-photo,
+  .portrait-wash,
+  .portrait-ring,
+  .portrait-dot,
+  .portrait-meta {
+    animation: none;
+  }
+
+  .portrait-layer,
+  .portrait-photo {
+    transition: none;
+  }
+}

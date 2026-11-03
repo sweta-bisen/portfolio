@@ -1,0 +1,323 @@
+/* style.css — cool paper layout for a data portfolio. Soft background, slate type, teal accent. */
+
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --heading: #0f172a;
+  --text: #334155;
+  --dim: #475569;
+  --line: #cbd5e1;
+  --teal: #0f766e;
+  --teal-soft: rgba(15, 118, 110, 0.12);
+  --sans: "Inter", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; color-scheme: light; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: inherit; }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--heading);
+  color: var(--bg);
+  padding: 0.4rem 0.7rem;
+  z-index: 5;
+}
+
+.skip:focus { top: 1rem; }
+
+.page {
+  width: min(1120px, calc(100% - 3rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.15fr);
+  column-gap: 4rem;
+}
+
+.intro {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 6rem 0 3rem;
+}
+
+h1 {
+  margin: 0;
+  color: var(--heading);
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+#role {
+  margin: 0.75rem 0 0;
+  color: var(--heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.tagline {
+  margin: 1rem 0 0;
+  max-width: 18rem;
+  color: var(--text);
+}
+
+.nav { margin-top: 4rem; }
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: max-content;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  text-decoration: none;
+  color: var(--dim);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.nav .bar {
+  width: 2rem;
+  height: 1px;
+  background: var(--line);
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible,
+.nav a.active {
+  color: var(--heading);
+}
+
+.nav a:hover .bar,
+.nav a:focus-visible .bar,
+.nav a.active .bar {
+  width: 4rem;
+  background: var(--heading);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.socials a {
+  color: var(--text);
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.socials svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}
+
+.resume {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.resume:hover,
+.resume:focus-visible { color: var(--teal); }
+
+.socials a:hover,
+.socials a:focus-visible { color: var(--heading); }
+
+.content { padding: 6rem 0 4rem; }
+
+.content section + section { margin-top: 5.5rem; }
+
+.content h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.about p { margin: 0; }
+
+.about p + p { margin-top: 1rem; }
+
+.contact-line {
+  margin: 1rem 0 0;
+  color: var(--dim);
+}
+
+.contact-line a { color: var(--heading); }
+
+.education { margin-top: 1.5rem; }
+
+.education p { margin: 0; }
+
+.education p + p { margin-top: 0.85rem; }
+
+.education strong {
+  display: block;
+  color: var(--heading);
+  font-weight: 500;
+}
+
+.skill-groups {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+}
+
+.skill-groups li {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  font-size: 0.95rem;
+}
+
+.skill-groups span {
+  color: var(--heading);
+  font-weight: 500;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.75rem 1.25rem;
+  padding: 1rem 1.15rem;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.list:hover .card { opacity: 0.45; }
+
+.list:hover .card:hover,
+.list:hover .card:focus-visible {
+  opacity: 1;
+  background: var(--card);
+}
+
+.dates {
+  margin: 0.15rem 0 0;
+  color: var(--dim);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card h3 {
+  margin: 0;
+  color: var(--heading);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.org { white-space: nowrap; }
+
+.points {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.points li + li { margin-top: 0.35rem; }
+
+.summary { margin: 0.45rem 0 0; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  color: var(--teal);
+  background: var(--teal-soft);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.empty { margin: 0; padding: 0 1.15rem; }
+
+a:focus-visible {
+  outline: 2px solid var(--heading);
+  outline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+    width: min(100% - 2.5rem, 40rem);
+  }
+
+  .intro {
+    position: relative;
+    height: auto;
+    padding: 4.5rem 0 0;
+  }
+
+  .content { padding-top: 3rem; }
+
+  .content h2 {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    margin: 0 0 1rem;
+    color: var(--heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .card { grid-template-columns: 1fr; gap: 0.25rem; }
+  .skill-groups li { grid-template-columns: 1fr; gap: 0.15rem; }
+  .org { white-space: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nav .bar, .card { transition: none; }
+}
